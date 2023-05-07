@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listar Peliculas</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Peliculas</h1>
+		<a  th:href="@{/peliculas/nuevo}">Create Nueva Pelicula</a> <br />
+		<br/>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Duracion</th>
+					<th>Clasificacion</th>
+					<th>Idioma</th>
+					<th>Genero</th>
+					<th>Formato</th>
+					<th>Sinopsis</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pelicula : ${listaPeliculas}">
+					<td th:text="${pelicula.idPelicula}">Id</td>
+					<td th:text="${pelicula.nombre}">Nombre</td>
+					<td th:text="${pelicula.duracion}">Duracion</td>
+					<td th:text="${pelicula.clasificacion}">Clasificacion</td>
+					<td th:text="${pelicula.idioma}">Idioma</td>
+					<td th:text="${pelicula.genero}">Genero</td>
+					<td th:text="${pelicula.formato}">Formato</td>
+					<td th:text="${pelicula.sinopsis}">Sinopsis</td>
+					<td><a th:href="@{/peliculas/actualizar/{id}(id=${pelicula.idPelicula})}">Actualizar</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a th:href="@{/peliculas/eliminar/{id}(id=${pelicula.idPelicula})}">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

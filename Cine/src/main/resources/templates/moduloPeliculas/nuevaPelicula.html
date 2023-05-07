@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Crear Nueva Pelicula</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Nueva Pelicula</h1>
+		<br />
+		<form action="#" th:action="@{/peliculas/guardar}" th:object="${pelicula}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Nombre:</td>
+					<td><input type="text" th:field="*{nombre}" /></td>
+				</tr>
+				<tr>
+					<td>Duracion:</td>
+					<td><input type="text" th:field="*{duracion}" /></td>
+				</tr>
+				<tr>
+					<td>Clasificacion:</td>
+					<td><input type="text" th:field="*{clasificacion}" /></td>
+				</tr>
+				<tr>
+					<td>Idioma:</td>
+					<td><input type="text" th:field="*{idioma}" /></td>
+				</tr>
+				
+				<tr>
+					<td>Genero:</td>
+					<td><input type="text" th:field="*{genero}" /></td>
+				</tr>
+				
+				<tr>
+					<td>Formato:</td>
+					<td><input type="text" th:field="*{formato}" /></td>
+				</tr>
+				
+				<tr>
+					<td>Sinopsis:</td>
+					<td><textarea  rows = "20" cols = "80" th:field="*{sinopsis}" ></textarea></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</html>
