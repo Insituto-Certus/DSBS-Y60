@@ -5,18 +5,21 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,12 +28,13 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="pelicula")
+@XmlRootElement
 
 //Utilizando Lombock
-@Data
-@EqualsAndHashCode(callSuper=false)
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@EqualsAndHashCode(callSuper=false)
+//@NoArgsConstructor
+//@AllArgsConstructor
 
 @NamedQueries({
 	@NamedQuery(name = "Pelicula.findAll", query = "SELECT p FROM Pelicula p")
@@ -76,5 +80,65 @@ public class Pelicula implements Serializable{
   	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pelicula" , fetch=FetchType.LAZY)
     @JsonBackReference(value="pelicula_fun")
     private List<Funciones> funcionesList;
+  	
+  	
+
+	public Integer getIdPelicula() {
+		return idPelicula;
+	}
+	public void setIdPelicula(Integer idPelicula) {
+		this.idPelicula = idPelicula;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(String duracion) {
+		this.duracion = duracion;
+	}
+	public String getClasificacion() {
+		return clasificacion;
+	}
+	public void setClasificacion(String clasificacion) {
+		this.clasificacion = clasificacion;
+	}
+	public String getIdioma() {
+		return idioma;
+	}
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	public String getFormato() {
+		return formato;
+	}
+	public void setFormato(String formato) {
+		this.formato = formato;
+	}
+	public String getSinopsis() {
+		return sinopsis;
+	}
+	public void setSinopsis(String sinopsis) {
+		this.sinopsis = sinopsis;
+	}
+	
+	@XmlTransient
+	public List<Funciones> getFuncionesList() {
+		return funcionesList;
+	}
+	public void setFuncionesList(List<Funciones> funcionesList) {
+		this.funcionesList = funcionesList;
+	}
+  	
 	
 }

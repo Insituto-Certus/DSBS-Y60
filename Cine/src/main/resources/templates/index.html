@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Login</title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/miLogin.css" rel="stylesheet" />
+</head>
+<body>
+<body>
+	<div class="container" id="containerLogin">
+		<center>
+			<img src="imagenes/avatar.png" id="avatar" alt=""
+				class="rounded-circle" />
+		</center>
+		<form id="formulario1" th:action="@{/login}" method="post">
+			<div class="form-group">
+				<legend>Por favor autenticarse:</legend>
+                <div th:if="${param.error}" class="alert alert-success">    
+                   Usuario y password Invalido.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success"> 
+                  Cerraste sesion, quieres volver a inicar...
+                </div>
+            </div>   
+			<div class="form-group">
+				<input type="text" class="form-control" id="username" name="username"
+					placeholder="Ingresa usuario">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="password" name="password"
+					placeholder="Contraseña">
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary" id="botonAuth">Autenticar</button>
+			</div>
+		</form>
+
+	</div>
+
+</body>
+
+
+</body>
+
+</html>
