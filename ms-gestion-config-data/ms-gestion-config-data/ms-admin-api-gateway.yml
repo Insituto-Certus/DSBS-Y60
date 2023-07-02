@@ -1,0 +1,46 @@
+server:
+  port: 8887
+
+# Registry Client
+eureka:
+   client:
+      fetch-registry: true
+      serviceUrl:
+         defaultZone: http://localhost:8889/eureka
+# Mapeo de Microservicios
+ 
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+      - id: id-carteleraWeb
+        uri: lb://CINE
+        predicates:
+        - Path=/carteleraWeb/**
+        
+      - id: albums
+        uri: https://jsonplaceholder.typicode.com/albums
+        predicates:
+        - Path=/albums       
+# Activacion de endpoints         
+#management:
+#     endpoints:
+#       web:
+#         exposure:
+#           include: '*'
+#     endpoint:
+#       health:
+#         show-details: always
+
+management:
+   endpoint:
+     gateway:
+       enabled: true
+   endpoints:
+     web:
+       exposure:
+         include: "gateway"

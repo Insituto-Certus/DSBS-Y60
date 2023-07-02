@@ -1,0 +1,40 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /carteleraWeb
+    
+  error:
+    include-details: always
+
+# Configuraciones de la web          
+  mvc:
+    view:
+      prefix: resources/templates
+      suffix: html
+               
+# Conexión a MySQL
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/carteleradb2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+##Configuraciones JPA - Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+# Registry Client
+eureka:
+   client:
+      fetch-registry: true
+      serviceUrl:
+         defaultZone: http://localhost:8889/eureka
+
+    

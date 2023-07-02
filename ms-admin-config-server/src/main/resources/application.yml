@@ -1,0 +1,30 @@
+server:
+  port: 8888
+  
+spring:
+  application:
+    name: ms-admin-config-server
+    
+#Configuracion Local
+  profiles:
+    active: native
+    
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ///D:\CERTUS 2023\Diseño de Soluciones Basado en Servicios\Workspace-Certus\ms-gestion-config-data\ms-gestion-config-data
+      
+#Configuracion Cloud (git)
+#  cloud:
+#    config:
+ #     server:
+ #       git:
+ #         uri: https://github.com/Alcale-Solutions/Arquitectura-Microservicios-Feb-2023.git
+ #         searchPaths: ms-gestion-config-data
+ #         username: ${USER_NAME}
+  #        password: ${USER_PASSWORD}
+  #        default-label: main
+  #        cloneOnStart: true
+  #        ignore-local-ssh-settings: true      
+      

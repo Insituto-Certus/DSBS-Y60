@@ -1,0 +1,16 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /micro-employee
+    
+  error:
+    include-details: always
+       
+# Registry Client
+eureka:
+   client:
+      fetch-registry: true
+      serviceUrl:
+         defaultZone: http://localhost:8889/eureka
+
+    

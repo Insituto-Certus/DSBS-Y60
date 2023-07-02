@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'pe.edu.alcale.solutions.java.sb.msadminregistryserver'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2020.0.2")
+}
+
+dependencies {
+	
+	// Registry server
+		
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+	
+	// Config Client
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'	
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
+			
+	// Test
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

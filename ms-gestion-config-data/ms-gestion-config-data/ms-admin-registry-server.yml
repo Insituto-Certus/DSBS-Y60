@@ -1,0 +1,17 @@
+server:
+  port: 8889
+#  servlet:
+#   context-path: /Cine
+    
+#  error:
+#    include-details: always
+eureka:
+   instance:
+      hostname: localhost
+   client:
+        register-with-eureka: false
+        fetch-registry: false
+        serviceUrl:
+           defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+#   wait-time-in-ms-when-sync-empty: 0
+    
